@@ -7,7 +7,8 @@ class OrderModel {
   final String userId;
   final int restaurantId;
   final String voucherCode;
-  final int voucherValue;
+  final double voucherValue;
+  final PaymentType? paymentType;
   final PaymentMethod paymentMethod;
   final int total;
   final OrderType type;
@@ -25,6 +26,7 @@ class OrderModel {
     required this.restaurantId,
     required this.voucherCode,
     required this.voucherValue,
+    required this.paymentType,
     required this.paymentMethod,
     required this.total,
     required this.type,
@@ -43,9 +45,14 @@ class OrderModel {
       userId: map['userId'],
       restaurantId: map['restaurantId'],
       voucherCode: map['voucherCode'],
-      voucherValue: map['voucherValue'],
+      voucherValue: double.parse(map['voucherValue'].toString()),
       paymentMethod:
           PaymentMethod.fromApiLabel(map['metadata']['payment_method']),
+      paymentType: map['metadata']['payment_type'] == null
+          ? null
+          : map['metadata']['payment_type'] == PaymentType.treat.apiLabel
+              ? PaymentType.treat
+              : PaymentType.individual,
       total: map['total'],
       type: map['type'] == OrderType.dineIn.apiLabel
           ? OrderType.dineIn

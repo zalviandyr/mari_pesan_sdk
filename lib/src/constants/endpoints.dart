@@ -14,7 +14,7 @@ class Endpoints {
   static const String cartDetailEditDelete = '/v1/carts/details/%s';
   static const String myOrder = '/v1/me/orders';
   static const String order = '/v1/orders/';
-  static const String orderDelete = '/v1/orders/%s';
+  static const String orderEditDelete = '/v1/orders/%s';
   static const String orderDetail = '/v1/orders/%s/details';
   static const String orderPayment = '/v1/orders/%s/payments';
   static const String voucher = '/v1/admins/vouchers/apply';

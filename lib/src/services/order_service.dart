@@ -94,8 +94,25 @@ class OrderService {
     return paymentLink;
   }
 
+  static Future<void> updatePaymentMethod(
+      OrderModel order, PaymentMethod payment) async {
+    String path = sprintf(Endpoints.orderEditDelete, [order.id]);
+
+    await _client.put(
+      path,
+      data: {
+        'metadata': {
+          'cart_id': order.cartId,
+          'order_time': order.orderTime.apiLabel,
+          'payment_type': order.paymentType?.apiLabel,
+          'payment_method': payment.apiLabel,
+        },
+      },
+    );
+  }
+
   static Future<void> delete(int orderId) async {
-    String path = sprintf(Endpoints.orderDelete, [orderId]);
+    String path = sprintf(Endpoints.orderEditDelete, [orderId]);
 
     await _client.delete(path);
   }
