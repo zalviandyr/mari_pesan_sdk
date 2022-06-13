@@ -1,0 +1,1 @@
+enum FormInputType { normal, password }
