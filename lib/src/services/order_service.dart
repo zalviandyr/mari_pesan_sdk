@@ -12,7 +12,7 @@ class OrderService {
     String path = Endpoints.myOrder;
 
     Response response = await _client.get(path, queryParameters: {
-      'status': isHistory ? 'history' : '',
+      'status': isHistory ? 'history' : 'running',
     });
 
     return (response.data['data'] as List)
