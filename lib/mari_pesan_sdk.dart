@@ -1,12 +1,12 @@
 library mari_pesan_sdk;
 
 export 'config.dart';
-export 'widgets/widgets.dart';
-export 'utils/utils.dart';
-export 'services/services.dart';
-export 'models/models.dart';
-export 'errors/errors.dart';
-export 'enums/enums.dart';
-export 'constants/constants.dart';
-export 'blocs/blocs.dart';
-export 'app/app.dart';
+export 'src/widgets/widgets.dart';
+export 'src/utils/utils.dart';
+export 'src/services/services.dart';
+export 'src/models/models.dart';
+export 'src/errors/errors.dart';
+export 'src/enums/enums.dart';
+export 'src/constants/constants.dart';
+export 'src/blocs/blocs.dart';
+export 'src/app/app.dart';
