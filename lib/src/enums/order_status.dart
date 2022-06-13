@@ -1,13 +1,14 @@
 enum OrderStatus {
-  unpaid('Unpaid'),
-  paid('Paid'),
-  waiting('Waiting'),
-  accepted('Accepted'),
-  finished('Finished'),
-  cancelled('Cancelled');
+  unpaid('Unpaid', 'Unpaid'),
+  paid('Paid', 'Paid'),
+  waiting('Waiting for Confirmation', 'Waiting'),
+  accepted('Accepted', 'Accepted'),
+  finished('Finished', 'Finished'),
+  cancelled('Cancelled', 'Cancelled');
 
+  final String label;
   final String apiLabel;
-  const OrderStatus(this.apiLabel);
+  const OrderStatus(this.label, this.apiLabel);
 
   factory OrderStatus.fromApiLabel(String label) {
     if (label == OrderStatus.unpaid.apiLabel) {
