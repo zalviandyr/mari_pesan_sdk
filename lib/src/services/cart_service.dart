@@ -15,14 +15,16 @@ class CartService {
         ? Endpoints.myCart
         : sprintf(Endpoints.cartDetail, [cartId]);
 
-    Response response = await _client.get(path);
+    Response? response;
     dynamic data;
 
     try {
+      response = await _client.get(path);
+
       List listData = response.data['data'];
       data = listData.isNotEmpty ? listData[0] : null;
     } on TypeError {
-      data = response.data['data'];
+      data = response?.data['data'];
     } catch (e) {
       log('ERROR', name: 'CartService - getCart', error: e);
 
