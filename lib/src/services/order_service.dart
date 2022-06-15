@@ -94,13 +94,16 @@ class OrderService {
     return paymentLink;
   }
 
-  static Future<void> updatePaymentMethod(
+  static Future<void> updateOrder(
       OrderModel order, PaymentMethod payment) async {
     String path = sprintf(Endpoints.orderEditDelete, [order.id]);
 
     await _client.put(
       path,
       data: {
+        'voucherCode': order.voucherCode,
+        'voucherValue': order.voucherValue,
+        'total': order.total,
         'metadata': {
           'cart_id': order.cartId,
           'order_time': order.orderTime.apiLabel,

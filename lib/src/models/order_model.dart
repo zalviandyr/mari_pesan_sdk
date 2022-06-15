@@ -6,11 +6,11 @@ class OrderModel {
   final int cartId;
   final String userId;
   final int restaurantId;
-  final String voucherCode;
-  final double voucherValue;
+  String voucherCode;
+  double voucherValue;
   final PaymentType? paymentType;
   final PaymentMethod paymentMethod;
-  final int total;
+  double total;
   final OrderType type;
   final String notes;
   final OrderStatus status;
@@ -53,7 +53,7 @@ class OrderModel {
           : map['metadata']['payment_type'] == PaymentType.treat.apiLabel
               ? PaymentType.treat
               : PaymentType.individual,
-      total: map['total'],
+      total: double.parse(map['total'].toString()),
       type: map['type'] == OrderType.dineIn.apiLabel
           ? OrderType.dineIn
           : OrderType.takeAway,
