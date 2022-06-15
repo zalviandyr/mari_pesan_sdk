@@ -62,7 +62,7 @@ class OrderModel {
       orderTime: map['metadata']['order_time'] == OrderProcess.now.apiLabel
           ? OrderProcess.now
           : OrderProcess.later,
-      createdAt: DateTime.parse(map['createdAt']),
+      createdAt: DateTime.parse(map['createdAt']).toLocal(),
       details: (map['orderDetails'] as List)
           .map((e) => CartDetailModel.fromMap(e))
           .toList(),
