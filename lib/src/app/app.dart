@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/route_manager.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mari_pesan_sdk/config.dart';
+import 'package:mari_pesan_sdk/src/constants/constants.dart';
 
 part 'api.dart';
 part 'auth_user.dart';
@@ -21,6 +23,8 @@ class App {
   App._();
 
   static App get instance => _app ??= App._();
+
+  ThemeData get themeData => _themeData();
 
   final LocalStorage storage = LocalStorage._instance;
   final FlutterNotification notification = FlutterNotification._instance;
@@ -71,5 +75,58 @@ class App {
     } catch (_) {
       return false;
     }
+  }
+
+  ThemeData _themeData() {
+    return ThemeData(
+      primaryColor: Pallette.primary,
+      scaffoldBackgroundColor: Colors.white,
+      colorScheme: const ColorScheme.light(
+        primary: Pallette.primary,
+        secondary: Pallette.primary,
+      ),
+      textTheme: GoogleFonts.interTextTheme(
+        const TextTheme(
+          headline5: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+            color: Pallette.textPrimary,
+          ),
+          headline6: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+            color: Pallette.textPrimary,
+          ),
+          // TextFormField text style
+          subtitle1: TextStyle(
+            fontWeight: FontWeight.w500,
+            color: Pallette.textPrimary,
+          ),
+          // Default text style on widget Text
+          bodyText2: TextStyle(
+            fontWeight: FontWeight.w500,
+            color: Pallette.textPrimary,
+          ),
+          caption: TextStyle(
+            fontWeight: FontWeight.w500,
+            color: Pallette.textPrimary,
+          ),
+        ),
+      ),
+      appBarTheme: AppBarTheme(
+        centerTitle: true,
+        color: Colors.white,
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Pallette.primary,
+          size: 30,
+        ),
+        titleTextStyle: GoogleFonts.inter(
+          color: Pallette.primary,
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+        ),
+      ),
+    );
   }
 }
